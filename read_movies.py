@@ -20,7 +20,6 @@ def get_table():
 
 
 def print_movie(movie):
-    """Print a single movie's details in a readable format."""
     title = movie.get("Title", "Unknown Title")
     year = movie.get("Year", "Unknown Year")
     ratings = movie.get("Ratings", "No ratings")
@@ -28,6 +27,7 @@ def print_movie(movie):
     print(f"  Title  : {title}")
     print(f"  Year   : {year}")
     print(f"  Ratings: {ratings}")
+    print(f"  Genre  : {genre}")
     print()
 
 
