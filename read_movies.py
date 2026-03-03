@@ -5,6 +5,8 @@
 # this is a test
 import boto3
 from boto3.dynamodb.conditions import Key
+from boto3.dynamodb.conditions import Attr
+
 
 # -------------------------------------------------------
 # Configuration — update REGION if your table is elsewhere
@@ -20,21 +22,20 @@ def get_table():
 def get_movie_by_title():
     dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
     table = dynamodb.Table('Movies')
-    title_input = input("Enter a movie title: ")
+    title_input = input("Enter the movie title: ").strip()
 
-    # Scan table with filter
     response = table.scan(
-        FilterExpression=Attr("Title").eq(title_input)
+        FilterExpression=Attr("Title").eq(title_input)  # Use the exact attribute name in your table
     )
-    items = response.get("Items", [])
+    movies = response.get('Items', [])
 
-    # Check if movie was found
-    if items:
-        print("\nMovie Found:\n")
-        for movie in items:
-            print_movie(movie)
+    if movies:
+        for movie in movies:
+            print("Movie found:")
+            for key, value in movie.items():
+                print(f"{key}: {value}")
     else:
-        print("\nMovie not found.")
+        print(f"No movie found with title '{title_input}'.")
 
 def print_movie(movie):
     title = movie.get("Title", "Unknown Title")
