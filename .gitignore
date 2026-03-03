@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 # Python bytecode — generated automatically when you run a script, no need to track
 __pycache__/
 *.pyc
 
 # macOS metadata files — created automatically by Finder, not part of your project
 .DS_Store
+=======
+.env
+>>>>>>> 83b2f7e8cb90efa7dc5a90da4a7540f43f55169e
+
