@@ -25,6 +25,7 @@ def print_movie(movie):
     ratings = movie.get("Ratings", "No ratings")
     genre = movie.get("Genre", "Unknown Genre")   # ← FIXED
 
+    print(movie)
     print(f"  Title  : {title}")
     print(f"  Year   : {year}")
     print(f"  Ratings: {ratings}")
