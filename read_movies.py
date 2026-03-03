@@ -18,6 +18,8 @@ def get_table():
     dynamodb = boto3.resource("dynamodb", region_name=REGION)
     return dynamodb.Table(TABLE_NAME)
 def get_movie_by_title():
+    dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+    table = dynamodb.Table('Movies')
     title_input = input("Enter a movie title: ")
 
     # Scan table with filter
