@@ -74,3 +74,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    if __name__ == "__main__":
+    get_movie_by_title()
