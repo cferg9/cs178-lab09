@@ -17,7 +17,22 @@ def get_table():
     """Return a reference to the DynamoDB Movies table."""
     dynamodb = boto3.resource("dynamodb", region_name=REGION)
     return dynamodb.Table(TABLE_NAME)
+def get_movie_by_title():
+    title_input = input("Enter a movie title: ")
 
+    # Scan table with filter
+    response = table.scan(
+        FilterExpression=Attr("Title").eq(title_input)
+    )
+    items = response.get("Items", [])
+
+    # Check if movie was found
+    if items:
+        print("\nMovie Found:\n")
+        for movie in items:
+            print_movie(movie)
+    else:
+        print("\nMovie not found.")
 
 def print_movie(movie):
     title = movie.get("Title", "Unknown Title")
